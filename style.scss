@@ -9,7 +9,96 @@ html, body {
     height: 100%;
 }
 
+body {
+    background-color: black;
+}
+
 main {
     width: 100%;
     height: 100%;
+    color: white;
+
+    section {     
+        width: 450px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+
+        .reels {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 20px;
+            
+            video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            .profile {
+                position: absolute;
+                padding: 15px;
+                bottom: 5%;
+
+                .info {
+                    display: flex;
+                    align-items: center;
+                    gap: 30px;
+
+                    .info-main {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    }
+
+                    button {
+                        padding: 2px 4px;
+                        font-size: 12px;
+                        border: 1px solid white;
+                        border-radius: 5px;
+                        background-color: transparent;
+                        color: white;
+                    }
+                }
+
+                p {
+                    margin-top: 10px;
+                    font-size: 16px;
+                }
+            }
+
+            .actions {
+                position: absolute;
+                right: 7%;
+                bottom: 20%;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                i {
+                    font-size: 28px;
+                }
+
+                #red{
+                    color: red;
+                }
+
+                h1 {
+                    font-size: 15px;
+                    font-weight: 400;
+                }
+
+                .heart, .comment, .share {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                }
+            }
+        }
+    }
 }
