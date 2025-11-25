@@ -156,3 +156,38 @@ reels.forEach(function (user) {
 
 let section = document.querySelector("section")
 section.innerHTML = sum
+
+let followBtn = document.querySelectorAll(".info button")
+
+followBtn.forEach(function(follow){
+  follow.addEventListener("click", function (){
+    if (follow.innerText === "Follow") {
+      follow.innerText = "Following";
+    } else {
+      follow.innerText = "Follow";
+    }
+  });
+});
+
+let likeBtn = document.querySelectorAll(".heart i");
+
+likeBtn.forEach(function (like, index) {
+  like.addEventListener("click", function () {
+    
+    let currentLikes = reels[index].likeCount;
+
+    if (like.classList.contains("ri-heart-3-line")) {
+      like.classList.remove("ri-heart-3-line");
+      like.classList.add("ri-heart-3-fill");
+      like.style.color = "red";
+      reels[index].likeCount = currentLikes + 1;
+    } 
+    else {
+      like.classList.remove("ri-heart-3-fill");
+      like.classList.add("ri-heart-3-line");
+      like.style.color = "white";
+      reels[index].likeCount = currentLikes - 1;
+    }
+    like.nextElementSibling.innerText = reels[index].likeCount;
+  });
+});
