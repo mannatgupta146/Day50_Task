@@ -9,7 +9,7 @@ const reels = [
     commentCount: 12,
     shareCount: 4,
     video: "./assets/1.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "arjun_malik",
@@ -21,7 +21,7 @@ const reels = [
     commentCount: 33,
     shareCount: 9,
     video: "./assets/2.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "tanya_creates",
@@ -33,7 +33,7 @@ const reels = [
     commentCount: 18,
     shareCount: 7,
     video: "./assets/3.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "food_with_riya",
@@ -45,7 +45,7 @@ const reels = [
     commentCount: 51,
     shareCount: 16,
     video: "./assets/4.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "travel_diaries",
@@ -57,7 +57,7 @@ const reels = [
     commentCount: 89,
     shareCount: 22,
     video: "./assets/5.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "tech_with_kabir",
@@ -69,7 +69,7 @@ const reels = [
     commentCount: 14,
     shareCount: 5,
     video: "./assets/6.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "dance_by_meera",
@@ -81,7 +81,7 @@ const reels = [
     commentCount: 40,
     shareCount: 13,
     video: "./assets/7.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "gaming_adarsh",
@@ -93,7 +93,7 @@ const reels = [
     commentCount: 22,
     shareCount: 8,
     video: "./assets/8.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "chess_master_01",
@@ -105,7 +105,7 @@ const reels = [
     commentCount: 27,
     shareCount: 11,
     video: "./assets/9.mp4",
-    isMuted: false
+    isMuted: true,
   },
   {
     username: "rider_kartik",
@@ -117,7 +117,7 @@ const reels = [
     commentCount: 40,
     shareCount: 15,
     video: "./assets/10.mp4",
-    isMuted: false
+    isMuted: true,
   }
 ];
 
@@ -127,7 +127,7 @@ let sum = "";
 
 reels.forEach(function (user) {
   sum += `<div class="reels">
-    <video autoplay loop muted src="${user.video}"></video>
+    <video autoplay loop src="${user.video}"></video>
 
     <!-- VOLUME BUTTON -->
     <div class="volume">
@@ -226,6 +226,17 @@ section.addEventListener("click", function (e) {
     // Toggle mute for clicked reel
     reels[index].isMuted = !reels[index].isMuted;
     video.muted = reels[index].isMuted;
+
+     if (reels[index].isMuted) {
+    video.muted = true;
+  } else {
+    video.muted = false;
+
+    // 🔥 IMPORTANT FIX FOR FIRST VIDEO
+    video.pause();
+    video.currentTime = 0;
+    video.play();
+  }
 
     // Change icon
     if (video.muted) {
